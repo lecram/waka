@@ -1,0 +1,95 @@
+Home
+Início
+
+Users
+Usuários
+
+Login
+Entrar
+
+Logout
+Sair
+
+New Page
+Nova Página
+
+User
+Usuário
+
+Password
+Senha
+
+Edit
+Editar
+
+History
+Histórico
+
+Name
+Nome
+
+Title
+Título
+
+Text
+Texto
+
+Private
+Privado
+
+Message
+Mensagem
+
+Cancel
+Cancelar
+
+Save
+Salvar
+
+Role
+Perfil
+
+Actions
+Ações
+
+New User
+Novo Usuário
+
+Current Password
+Senha Atual
+
+New Password
+Nova Senha
+
+Confirm New Password
+Repetir Nova Senha
+
+Username
+Usuário
+
+Real Name
+Nome
+
+Language
+Idioma
+
+Versions
+Versões
+
+Date
+Data
+
+Author
+Autor
+
+Reader
+Leitor
+
+Writer
+Escritor
+
+Administrator
+Administrador
+
+Source
+Fonte

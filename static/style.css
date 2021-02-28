@@ -1,0 +1,159 @@
+:root {
+  --color-1: #B4C2AA;
+  --color-2: #DAEACE;
+  --color-3: #EEF7DC;
+  --color-4: #F5FFE2;
+}
+
+.page {
+  font-family: Garamond, Georgia, serif;
+  width: 60%;
+  margin-left: 15%;
+  border-left-width: 1px;
+  border-left-color: #006;
+  border-left-style: solid;
+  padding-left: 5%;
+  border-right-width: 1px;
+  border-right-color: #006;
+  border-right-style: solid;
+  padding-right: 5%;
+}
+
+.page p {
+    text-align : justify;
+}
+
+.page h2, .page h3, .page h4, .page h5, .page h6 {
+    font-family: Helvetica, Verdana, sans-serif;
+}
+
+.page h2 {
+    text-align: center;
+}
+
+.page pre, .page tt {
+    border-width: 1px;
+    border-color: #DDD;
+    border-style: solid;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: #F8F8F4;
+    padding:2px;
+}
+
+.page img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page table {
+  border-collapse: collapse;
+}
+
+.page th {
+  background-color: #EEEEEE;
+}
+
+.page th, .page td {
+  padding: 5px;
+  border: 1px solid #006;
+}
+
+.row-list {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.row-list th, .row-list td {
+  padding: 20px 5px;
+  border: 3px solid grey;
+}
+
+.row-list tbody tr:nth-child(odd) {
+  background-color: var(--color-3);
+}
+
+.centered {
+  text-align: center;
+}
+
+.ul-form {
+  list-style-type: none;
+}
+
+.field-list tr td {
+  padding: 2px 7px;
+}
+
+.field-list tr td:first-child {
+  background-color: var(--color-3);
+  font-weight: bold;
+  text-align: right;
+}
+
+.field-list tr td:nth-child(2) {
+  font-size: 18px;
+}
+
+.flat-field {
+  font-size: 18px;
+  background: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-1);
+  border-radius: 0px;
+}
+
+.flat-field:invalid {
+  border-color: lightcoral;
+}
+
+.flat-button {
+  box-shadow: none;
+  background: none;
+  background-color: var(--color-4);
+  border-radius: 6px;
+  border: 3px solid var(--color-1);
+  font-weight: bold;
+  padding: 5px 20px;
+  cursor: default;
+  color: black;
+  font-size: 16px;
+  text-decoration: none;
+  text-shadow: 1px 1px 0px white;
+}
+
+.flat-button:hover {
+  background-color: var(--color-2);
+}
+
+.link-list {
+  table-layout: fixed;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.link-list th, .link-list td {
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.link-list tbody tr:hover {
+  background: cyan;
+}
+
+.link-list td a {
+  background: #EEEEEE;
+  padding: 0px 5px;
+}
+
+#nav-bar {
+  float: left;
+}
+
+#auth-bar {
+  float: right;
+}
