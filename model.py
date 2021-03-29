@@ -98,6 +98,12 @@ class Version(BaseModel):
         html = difflib.HtmlDiff()
         return html.make_table(fromlines, tolines, fromdesc, todesc, context=True, numlines=3)
 
+class Image(BaseModel):
+    path = CharField(max_length=32)
+    desc = CharField(max_length=128)
+    mime = CharField(max_length=32)
+    data = BlobField()
+
 def is_foreign_key(field):
     return isinstance(field, ForeignKeyField)
 
@@ -142,7 +148,7 @@ def new_page(name, title, text, private, author):
     page = Page.create(name=name, title=title, private=private)
     return Version.create(page=page, num=1, date=D.today(), msg=msg, diff=diff, author=author)
 
-all_tables = [Lang, Role, User, Session, Page, Version]
+all_tables = [Lang, Role, User, Session, Page, Version, Image]
 
 def create_tables():
     db.create_tables(all_tables)

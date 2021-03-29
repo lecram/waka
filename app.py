@@ -1,6 +1,7 @@
 import re
 
-from bottle import view, static_file, hook, route, run, request, response, redirect, template
+from bottle import view, static_file, hook, route, run
+from bottle import request, response, redirect, template, HTTPResponse
 import markdown2
 
 from model import *
@@ -334,5 +335,71 @@ def post_upd(_id):
     else:       # don't create new version
         version = page.upd_version(text)
     redirect('/p/{}'.format(version.page.name))
+
+@route('/img_new')
+@view('img_edit')
+def img_new():
+    session = get_session()
+    if not can_write(session):
+        redirect('/')
+    _ = get_underline(session, request)
+    return dict(_=_, img=None, suser=session.user)
+
+@route('/img_edit/<path>')
+@view('img_edit')
+def img_edit(path):
+    session = get_session()
+    img = Image.get_or_none(Image.path == path)
+    if None in (session, img):
+        redirect('/')
+    _ = get_underline(session, request)
+    return dict(_=_, img=img, suser=session.user)
+
+class DummyFile:
+    def __init__(self):
+        self.data = b""
+    def write(self, buf):
+        self.data += buf
+
+@route('/img_new', method='POST')
+def post_img_new():
+    session = get_session()
+    if not can_write(session):
+        redirect('/')
+    path = request.forms.path
+    desc = request.forms.desc
+    fp = DummyFile()
+    fup = request.files['fname']
+    mime = fup.content_type
+    fup.save(fp)
+    img = Image.create(path=path, desc=desc, mime=mime, data=fp.data)
+    redirect('/img/{}'.format(img.path))
+
+@route('/img_upd/<_id:int>', method='POST')
+def post_img_upd(_id):
+    session = get_session()
+    if not can_write(session):
+        redirect('/')
+    img = Image.get_by_id(_id)
+    img.path = request.forms.path
+    img.desc = request.forms.desc
+    fp = DummyFile()
+    fup = request.files['fname']
+    img.mime = fup.content_type
+    fup.save(fp)
+    img.data = fp.data
+    img.save()
+    redirect('/img/{}'.format(img.path))
+
+@route('/img/<path>')
+def image(path):
+    session = get_session()
+    img = Image.get_or_none(Image.path == path)
+    if None in (session, img):
+        redirect('/')
+    resp = HTTPResponse(body=img.data, status=400)
+    resp.set_header('content_type', img.mime)
+    return resp
+
 
 run(host='localhost', port=8080)
